@@ -24,7 +24,7 @@ const Cards = () => {
   
   useEffect(() => {
     axios
-      .get(`${URL}/getQuestions`)
+      .get( process.env.REACT_APP_BASE_URL+`/getQuestions`)
       .then((res) => {
         setDatas(res.data);
       })

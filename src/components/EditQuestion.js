@@ -27,7 +27,7 @@ const EditQuestion = () => {
 
       const handleUpdate = async (id) => {
         console.log(id);
-        const isUpdated = await axios.put(`${URL}/updateQuestions/${id}`,question).then((res)=>{
+        const isUpdated = await axios.put( process.env.REACT_APP_BASE_URL+`/updateQuestions/${id}`,question).then((res)=>{
             console.log(res);
             setCounter(counter + 1);
         }).catch((err)=> {
@@ -40,7 +40,7 @@ const EditQuestion = () => {
     }
 
     const handleDelete = async (id) => {
-        const isDeleted = await axios.delete(`${URL}/deleteQuestions/${id}`).then((res)=>{
+        const isDeleted = await axios.delete( process.env.REACT_APP_BASE_URL+`/deleteQuestions/${id}`).then((res)=>{
             console.log(res);
             setCounter(counter + 1);
         }).catch((err)=> {
@@ -53,7 +53,7 @@ const EditQuestion = () => {
     }
 
     const handleSelected =  async (item) => {
-      await  axios.get(`${URL}/getQuestion/${item}`).then((res)=> {
+      await  axios.get( process.env.REACT_APP_BASE_URL+`/getQuestion/${item}`).then((res)=> {
            setQuestion({
             question: res.data.question,
             option1: res.data.option1,
@@ -71,7 +71,7 @@ const EditQuestion = () => {
     }
       
     useEffect(() => {
-         axios.get(`${URL}/getQuestions`).then((res)=>{
+         axios.get( process.env.REACT_APP_BASE_URL+`/getQuestions`).then((res)=>{
            setDatas(res.data)
         }).catch((err) => {
             console.log(err);

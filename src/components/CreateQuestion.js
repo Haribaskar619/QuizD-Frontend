@@ -25,7 +25,7 @@ const CreateQuestion = () => {
   const handleCreate = async () => {
     // console.log(question);
     const createData = await axios
-      .post("http://localhost:5000/createQuestions", question)
+      .post( process.env.REACT_APP_BASE_URL+"/createQuestions", question)
       .then((res) => {
         console.log(res);
         alert("Question Created and stored");
